@@ -36,6 +36,7 @@ main{
     position: relative;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 12rem .5rem hsl(218, 23%, 13%);
 }
 .dice{
     align-self: center;
