@@ -2,27 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Advice generator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  Advice #<!-- Advice ID goes here -->
-
-  "<!-- Advice text goes here -->"
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  <main>
+    <div class="advice-container">
+      <h1 class="advice-id">Advice #123<!-- Advice ID goes here --></h1>
+      <p class="advice">"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto, et!"<!-- Advice text goes here --></p>
+      <div class="divider"></div>
+      <button onClick="getAdvice()" class="dice"></button>
+    </div>
+  </main>
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Squashim</a>.
+    </div>
+  </footer>
+  <script>
+    const id = document.querySelector('.advice-id');
+    const advice = document.querySelector('.advice');
+    const api = "https://api.adviceslip.com/advice";
+    
+    async function getAdvice() {
+      const response = await fetch(api);
+      const data = await response.json();
+      advice.textContent = '"' + data.slip.advice + '"';
+      id.textContent = "advice #" + data.slip.id;
+    }
+    
+    getAdvice();
+  </script>
 </body>
 </html>
