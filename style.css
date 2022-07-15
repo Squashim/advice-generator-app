@@ -53,6 +53,7 @@ main{
     position: absolute;
     background-color: var(--primary200);
     cursor: pointer;
+    color: transparent;
 }
 .dice:hover{
     box-shadow: 0 0 1.5rem var(--primary200);
